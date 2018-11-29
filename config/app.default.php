@@ -28,10 +28,7 @@ return [
      *      /.htaccess
      *      /webroot/.htaccess
      *   And uncomment the baseUrl key below.
-     * - fullBaseUrl - A base URL to use for absolute links. When set to false (default)
-     *   CakePHP generates required value based on `HTTP_HOST` environment variable.
-     *   However, you can define it manually to optimize performance or if you
-     *   are concerned about people manipulating the `Host` header.
+     * - fullBaseUrl - A base URL to use for absolute links.
      * - imageBaseUrl - Web path to the public images directory under webroot.
      * - cssBaseUrl - Web path to the public css directory under webroot.
      * - jsBaseUrl - Web path to the public js directory under webroot.
@@ -43,12 +40,11 @@ return [
         'namespace' => 'App',
         'encoding' => env('APP_ENCODING', 'UTF-8'),
         'defaultLocale' => env('APP_DEFAULT_LOCALE', 'en_US'),
-        'defaultTimezone' => env('APP_DEFAULT_TIMEZONE', 'UTC'),
         'base' => false,
         'dir' => 'src',
         'webroot' => 'webroot',
         'wwwRoot' => WWW_ROOT,
-        //'baseUrl' => env('SCRIPT_NAME'),
+        // 'baseUrl' => env('SCRIPT_NAME'),
         'fullBaseUrl' => false,
         'imageBaseUrl' => 'img/',
         'cssBaseUrl' => 'css/',
@@ -80,7 +76,7 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        //'timestamp' => true,
+        // 'timestamp' => true,
     ],
 
     /**
@@ -121,20 +117,6 @@ return [
             'serialize' => true,
             'duration' => '+1 years',
             'url' => env('CACHE_CAKEMODEL_URL', null),
-        ],
-
-        /**
-         * Configure the cache for routes. The cached routes collection is built the
-         * first time the routes are processed via `config/routes.php`.
-         * Duration will be set to '+2 seconds' in bootstrap.php when debug = true
-         */
-        '_cake_routes_' => [
-            'className' => 'File',
-            'prefix' => 'myapp_cake_routes_',
-            'path' => CACHE,
-            'serialize' => true,
-            'duration' => '+1 years',
-            'url' => env('CACHE_CAKEROUTES_URL', null),
         ],
     ],
 
@@ -197,14 +179,12 @@ return [
     'EmailTransport' => [
         'default' => [
             'className' => 'Mail',
-            /*
-             * The following keys are used in SMTP transports:
-             */
+            // The following keys are used in SMTP transports
             'host' => 'localhost',
             'port' => 25,
             'timeout' => 30,
-            'username' => null,
-            'password' => null,
+            'username' => 'user',
+            'password' => 'secret',
             'client' => null,
             'tls' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
@@ -232,15 +212,10 @@ return [
     /**
      * Connection information used by the ORM to connect
      * to your application's datastores.
-     *
-     * ### Notes
-     * - Drivers include Mysql Postgres Sqlite Sqlserver
-     *   See vendor\cakephp\cakephp\src\Database\Driver for complete list
-     * - Do not use periods in database name - it may lead to error.
-     *   See https://github.com/cakephp/cakephp/issues/6471 for details.
-     * - 'encoding' is recommended to be set to full UTF-8 4-Byte support.
-     *   E.g set it to 'utf8mb4' in MariaDB and MySQL and 'utf8' for any
-     *   other RDBMS.
+     * Do not use periods in database name - it may lead to error.
+     * See https://github.com/cakephp/cakephp/issues/6471 for details.
+     * Drivers include Mysql Postgres Sqlite Sqlserver
+     * See vendor\cakephp\cakephp\src\Database\Driver for complete list
      */
     'Datasources' => [
         'default' => [
@@ -248,7 +223,7 @@ return [
             'driver' => 'Cake\Database\Driver\Mysql',
             'persistent' => false,
             'host' => 'localhost',
-            /*
+            /**
              * CakePHP will use the default DB port based on the driver selected
              * MySQL on MAMP uses port 8889, MAMP users will want to uncomment
              * the following line and set the port accordingly
@@ -257,10 +232,7 @@ return [
             'username' => 'my_app',
             'password' => 'secret',
             'database' => 'my_app',
-            /*
-             * You do not need to set this flag to use full utf-8 encoding (internal default since CakePHP 3.6).
-             */
-            //'encoding' => 'utf8mb4',
+            'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
             'cacheMetadata' => true,
@@ -300,7 +272,7 @@ return [
             'username' => 'my_app',
             'password' => 'secret',
             'database' => 'test_myapp',
-            //'encoding' => 'utf8mb4',
+            'encoding' => 'utf8',
             'timezone' => 'UTC',
             'cacheMetadata' => true,
             'quoteIdentifiers' => false,
@@ -318,25 +290,15 @@ return [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,
             'file' => 'debug',
-            'url' => env('LOG_DEBUG_URL', null),
-            'scopes' => false,
             'levels' => ['notice', 'info', 'debug'],
+            'url' => env('LOG_DEBUG_URL', null),
         ],
         'error' => [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,
             'file' => 'error',
-            'url' => env('LOG_ERROR_URL', null),
-            'scopes' => false,
             'levels' => ['warning', 'error', 'critical', 'alert', 'emergency'],
-        ],
-        // To enable this dedicated query log, you need set your datasource's log flag to true
-        'queries' => [
-            'className' => 'Cake\Log\Engine\FileLog',
-            'path' => LOGS,
-            'file' => 'queries',
-            'url' => env('LOG_QUERIES_URL', null),
-            'scopes' => ['queriesLog'],
+            'url' => env('LOG_ERROR_URL', null),
         ],
     ],
 
