@@ -15,7 +15,7 @@ class UsersController extends AppController
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'add', 'edit']);
+        $this->Auth->allow(['logout', 'add', 'edit', 'delete']);
     }
 
     /**
@@ -58,8 +58,9 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+
         $user = $this->Users->get($id, [
-            'contain' => ['Articles']
+            'contain' => ['Articles', 'Roles']
         ]);
 
         $this->set('user', $user);
@@ -73,6 +74,13 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $this->loadModel('Roles');
+        $roleData = $this->Roles->find('all')->select(['id', 'name'])->toArray();
+        $roles = array();
+        foreach($roleData as $rdata){
+            $roles[$rdata->id] = $rdata->name;
+        }
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
@@ -83,8 +91,8 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        $this->set(compact('user', 'roles'));
+        $this->set('_serialize', ['user', 'roles']);
     }
 
     /**
@@ -96,9 +104,17 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->loadModel('Roles');
+        $roleData = $this->Roles->find('all')->select(['id', 'name'])->toArray();
+        $roles = array();
+        foreach($roleData as $rdata){
+            $roles[$rdata->id] = $rdata->name;
+        }
+
         $user = $this->Users->get($id, [
-            'contain' => []
+            'contain' => ['Roles']
         ]);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
@@ -108,8 +124,8 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
-        $this->set('_serialize', ['user']);
+        $this->set(compact('user', 'roles'));
+        $this->set('_serialize', ['user', 'roles']);
     }
 
     /**

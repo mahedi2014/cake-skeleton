@@ -31,8 +31,10 @@
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Role Id') ?></th>
-            <td><?= $this->Number->format($user->role_id) ?></td>
+            <th scope="row"><?= __('Role') ?></th>
+            <td>
+                <?= h($user->role->name) ?>
+            </td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>
