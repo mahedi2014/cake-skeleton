@@ -1,8 +1,8 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  * @var \App\Model\Entity\User $user
-  */
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User $user
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -29,6 +29,10 @@
         <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Role Id') ?></th>
+            <td><?= $this->Number->format($user->role_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

@@ -15,6 +15,7 @@ use Cake\Utility\Security;
 /**
  * Users Model
  *
+ * @property |\Cake\ORM\Association\BelongsTo $Roles
  * @property \App\Model\Table\ArticlesTable|\Cake\ORM\Association\HasMany $Articles
  *
  * @method \App\Model\Entity\User get($primaryKey, $options = [])
@@ -46,6 +47,10 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->belongsTo('Roles', [
+            'foreignKey' => 'role_id',
+            'joinType' => 'INNER'
+        ]);
         $this->hasMany('Articles', [
             'foreignKey' => 'user_id'
         ]);
@@ -70,6 +75,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('password')
+            ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmpty('password');
 
@@ -86,6 +92,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
+        $rules->add($rules->existsIn(['role_id'], 'Roles'));
 
         return $rules;
     }

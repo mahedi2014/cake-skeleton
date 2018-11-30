@@ -8,14 +8,14 @@ use App\Controller\AppController;
  *
  * @property \App\Model\Table\UsersTable $Users
  *
- * @method \App\Model\Entity\User[] paginate($object = null, array $settings = [])
+ * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
 class UsersController extends AppController
 {
     public function initialize()
     {
         parent::initialize();
-        $this->Auth->allow(['logout', 'add']);
+        $this->Auth->allow(['logout', 'add', 'edit']);
     }
 
     /**

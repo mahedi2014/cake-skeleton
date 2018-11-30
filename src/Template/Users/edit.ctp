@@ -1,7 +1,8 @@
 <?php
 /**
-  * @var \App\View\AppView $this
-  */
+ * @var \App\View\AppView $this
+ * @var \App\Model\Entity\User $user
+ */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
@@ -22,6 +23,7 @@
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
         <?php
+            echo $this->Form->control('role_id');
             echo $this->Form->control('email');
             echo $this->Form->control('password');
         ?>

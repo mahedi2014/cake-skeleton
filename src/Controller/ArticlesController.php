@@ -15,7 +15,7 @@ class ArticlesController extends AppController
         $this->loadComponent('Flash'); // Include the FlashComponent
         $this->loadComponent('Paginator'); // Include the FlashComponent
 
-        $this->Auth->allow(['tags']);
+        $this->Auth->allow(['tags', 'add','edit']);
     }
 
     public function index()

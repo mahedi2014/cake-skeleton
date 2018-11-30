@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  * User Entity
  *
  * @property int $id
+ * @property int $role_id
  * @property string $email
  * @property string $password
  * @property \Cake\I18n\FrozenTime $created
