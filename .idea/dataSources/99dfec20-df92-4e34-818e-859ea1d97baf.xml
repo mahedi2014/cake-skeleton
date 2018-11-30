@@ -974,180 +974,238 @@
       <Collation>utf8mb4_general_ci</Collation>
     </table>
     <table id="245" parent="3" name="articles_tags"/>
-    <table id="246" parent="3" name="tags">
+    <table id="246" parent="3" name="roles"/>
+    <table id="247" parent="3" name="tags">
       <Collation>utf8mb4_general_ci</Collation>
     </table>
-    <table id="247" parent="3" name="users"/>
-    <column id="248" parent="244" name="id">
+    <table id="248" parent="3" name="users"/>
+    <column id="249" parent="244" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="244" name="user_id">
+    <column id="250" parent="244" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="244" name="title">
+    <column id="251" parent="244" name="title">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="244" name="slug">
+    <column id="252" parent="244" name="slug">
       <Position>4</Position>
       <DataType>varchar(191)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="244" name="body">
+    <column id="253" parent="244" name="body">
       <Position>5</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="244" name="published">
+    <column id="254" parent="244" name="published">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
       <DefaultExpression>&apos;0&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="244" name="created">
+    <column id="255" parent="244" name="created">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="244" name="modified">
+    <column id="256" parent="244" name="modified">
       <Position>8</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="256" parent="244" name="slug">
+    <index id="257" parent="244" name="slug">
       <ColNames>slug</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="257" parent="244" name="user_key">
+    <index id="258" parent="244" name="user_key">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="258" parent="244" name="PRIMARY">
+    <key id="259" parent="244" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="259" parent="244" name="slug">
+    <key id="260" parent="244" name="slug">
       <ColNames>slug</ColNames>
       <UnderlyingIndexName>slug</UnderlyingIndexName>
     </key>
-    <foreign-key id="260" parent="244" name="user_key">
+    <foreign-key id="261" parent="244" name="user_key">
       <ColNames>user_id</ColNames>
       <RefSchemaName>cake_test</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="261" parent="245" name="article_id">
+    <column id="262" parent="245" name="article_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="245" name="tag_id">
+    <column id="263" parent="245" name="tag_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="263" parent="245" name="tag_key">
+    <index id="264" parent="245" name="tag_key">
       <ColNames>tag_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="264" parent="245" name="PRIMARY">
+    <key id="265" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>article_id
 tag_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="265" parent="245" name="article_key">
+    <foreign-key id="266" parent="245" name="article_key">
       <ColNames>article_id</ColNames>
       <RefSchemaName>cake_test</RefSchemaName>
       <RefTableName>articles</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="266" parent="245" name="tag_key">
+    <foreign-key id="267" parent="245" name="tag_key">
       <ColNames>tag_id</ColNames>
       <RefSchemaName>cake_test</RefSchemaName>
       <RefTableName>tags</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="267" parent="246" name="id">
+    <column id="268" parent="246" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="246" name="title">
+    <column id="269" parent="246" name="name">
       <Position>2</Position>
-      <DataType>varchar(191)|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="246" name="created">
+    <column id="270" parent="246" name="slug">
       <Position>3</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="246" name="modified">
+    <column id="271" parent="246" name="description">
       <Position>4</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>varchar(200)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="271" parent="246" name="title">
-      <ColNames>title</ColNames>
+    <column id="272" parent="246" name="status">
+      <Position>5</Position>
+      <DataType>tinyint(4)|0s</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="273" parent="246" name="created">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="274" parent="246" name="roles_slug_uindex">
+      <ColNames>slug</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="272" parent="246" name="PRIMARY">
+    <key id="275" parent="246" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="273" parent="246" name="title">
-      <ColNames>title</ColNames>
-      <UnderlyingIndexName>title</UnderlyingIndexName>
+    <key id="276" parent="246" name="roles_slug_uindex">
+      <ColNames>slug</ColNames>
+      <UnderlyingIndexName>roles_slug_uindex</UnderlyingIndexName>
     </key>
-    <column id="274" parent="247" name="id">
+    <column id="277" parent="247" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="247" name="email">
+    <column id="278" parent="247" name="title">
       <Position>2</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>varchar(191)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="247" name="created">
+      <Position>3</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="280" parent="247" name="modified">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="281" parent="247" name="title">
+      <ColNames>title</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="282" parent="247" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="283" parent="247" name="title">
+      <ColNames>title</ColNames>
+      <UnderlyingIndexName>title</UnderlyingIndexName>
+    </key>
+    <column id="284" parent="248" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="285" parent="248" name="role_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="247" name="password">
+    <column id="286" parent="248" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="247" name="created">
+    <column id="287" parent="248" name="password">
       <Position>4</Position>
-      <DataType>datetime|0s</DataType>
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="247" name="modified">
+    <column id="288" parent="248" name="created">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="279" parent="247" name="PRIMARY">
+    <column id="289" parent="248" name="modified">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="290" parent="248" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
