@@ -13,6 +13,15 @@ use App\Controller\AppController;
 class RolesController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+
+        $this->loadComponent('Flash'); // Include the FlashComponent
+        $this->loadComponent('Paginator'); // Include the FlashComponent
+
+        $this->Auth->allow(['add', 'edit', 'delete']);
+    }
     /**
      * Index method
      *

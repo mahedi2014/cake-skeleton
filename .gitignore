@@ -1,3 +1,5 @@
+.idea
+
 # CakePHP specific files #
 ##########################
 /config/app.php
